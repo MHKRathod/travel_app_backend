@@ -10,4 +10,4 @@ const categoryHandler = async (req,res) => {
     }
 }
 
-module.exports=categoryHandler;
+module.exports= categoryHandler;

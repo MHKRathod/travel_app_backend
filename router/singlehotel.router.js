@@ -2,17 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const Hotel = require("../model/hotel.model");
+const singleHotelHandler = require("../controller/singleHotelController");
 
 router.route("/:id")
-    .get(async (req,res) => {
-        try{
-            const {id} = req.params;
-            const singleHotel = await Hotel.findById(id);
-            res.json(singleHotel);
-        }
-        catch(error){
-            res.status(404).json({message: "No hotels found"});
-        }
-    })
+    .get(singleHotelHandler)
 
     module.exports = router;

@@ -12,11 +12,8 @@ const verifyUser = (req,res,next) => {
                 req.user = user;
                 next();
             }
-        })
-
-        
+        })  
      }
-
 }
 
 module.exports = verifyUser;

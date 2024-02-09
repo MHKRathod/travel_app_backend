@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const connectDB = require('./config/dbconfig');
+const cors = require('cors');
 
 const hotelsRouter = require("./router/hotel.router");
 const singleHotelRouter = require("./router/singlehotel.router");
@@ -11,6 +12,8 @@ const categoryDataAddedToDBRouter = require("./router/categoryimport.router");
 const wishlistDataAddedToDBRouter = require("./router/wishlist.router");
 
 const app = express();
+app.use(cors());
+
 
 app.use(express.json());
 connectDB();
