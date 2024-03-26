@@ -14,6 +14,10 @@ const wishlistDataAddedToDBRouter = require("./router/wishlist.router");
 const app = express();
 app.use(cors());
 
+app.use('/favicon.ico', (req, res) => {
+    res.status(404).end();
+  });
+
 
 app.use(express.json());
 connectDB();

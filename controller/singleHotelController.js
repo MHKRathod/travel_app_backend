@@ -1,6 +1,6 @@
 const Hotel = require("../model/hotel.model");
 
-const singhleHotelHandler = async(req,res) => {
+const singleHotelHandler = async(req,res) => {
     try{
         const {id} =req.params;
         const singleHotel = await Hotel.findById(id);
@@ -11,4 +11,4 @@ const singhleHotelHandler = async(req,res) => {
     }
 }
 
-module.exports = singhleHotelHandler;
+module.exports = singleHotelHandler;
