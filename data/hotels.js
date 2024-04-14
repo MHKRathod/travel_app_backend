@@ -12,7 +12,7 @@ const hotels = {
             city: "Banjar Valley",
             state: "Himachal Pradesh",
             country: "India",
-            price: 2999,
+            price: 1,
             rating: 3.7,
             numberOfBathrooms: 2,
             numberOfBeds: 2,
