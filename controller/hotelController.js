@@ -4,11 +4,12 @@ const Hotel = require("../model/hotel.model");
 const hotelHandler = async(req,res) => {
     const hotelCategory = req.query.hotelCategory
     try{
+        let hotelsInDB
         if(hotelCategory){
-          const hotelsInDB = await Hotel.find({category: hotelCategory}) 
+           hotelsInDB = await Hotel.find({category: hotelCategory}) 
         }
         else{
-            const hotelsInDB = await Hotel.find({})
+            hotelsInDB = await Hotel.find({})
         }
         hotelsInDB ? res.json(hotelsInDB) : res.status(404).json({message: "No hotels found"});
     }
