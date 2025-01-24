@@ -1,34 +1,23 @@
-const { v4: uuid } = require('uuid');
+const { v4: uuidv4 } = require('uuid'); // Import the uuid package
 
-const categories = {
-    "data": [
-        { id: uuid(), category: "National Parks" },
-        { id: uuid(), category: "Tiny Homes" },
-        { id: uuid(), category: "Farms" },
-        { id: uuid(), category: "Golfing" },
-        { id: uuid(), category: "Island" },
-        { id: uuid(), category: "Campervans" },
-        { id: uuid(), category: "Cabins" },
-        { id: uuid(), category: "Design" },
-        { id: uuid(), category: "Amazing Pools" },
-        { id: uuid(), category: "Lakefront" },
-        { id: uuid(), category: "Surfing" },
-        { id: uuid(), category: "A-frames" },
-        { id: uuid(), category: "Treehouses" },
-        { id: uuid(), category: "Tropical" },
-        { id: uuid(), category: "Bed & Breakfast" },
-        { id: uuid(), category: "Caves" },
-        { id: uuid(), category: "Shared Homes" },
-        { id: uuid(), category: "Earth Homes" },
-        { id: uuid(), category: "Countryside" },
-        { id: uuid(), category: "Luxe" },
-        { id: uuid(), category: "Amazing Views" },
-        { id: uuid(), category: "Castle" },
-        { id: uuid(), category: "Iconic Sites" },
-        { id: uuid(), category: "Historical Homes" },
-    ]
-}
-    
+const categoriesData = [
+    "National Parks", "Tiny Homes", "Farms", "Golfing", "Island", 
+    "Campervans", "Cabins", "Design", "Amazing Pools", "Lakefront",
+    "Surfing", "A-frames", "Treehouses", "Tropical", "Bed & Breakfast", 
+    "Caves", "Shared Homes", "Earth Homes", "Countryside", "Luxe", 
+    "Amazing Views", "Castle", "Iconic Sites", "Historical Homes"
+];
 
+// Generate categories with UUIDs
+const categoriesWithUUID = categoriesData.map(category => ({
+    id: uuidv4(), // Generate a unique ID for each category
+    category: category // The category name
+}));
 
-module.exports = categories;
+// Assuming you have a Category model to save data to MongoDB
+const Category = require('../model/category.model'); // Adjust the path to where your model is located
+
+// Save the categories to the database
+Category.insertMany(categoriesWithUUID)
+    .then(() => console.log('Categories successfully inserted into the database'))
+    .catch((error) => console.error('Error inserting categories:', error));
